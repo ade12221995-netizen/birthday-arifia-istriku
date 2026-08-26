@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>🎉 Spesial Ulang Tahun untuk Arifia Maulida 💖</title>
+  <meta name="description" content="Hadiah spesial ulang tahun untuk istri tercinta, Arifia Maulida. Penuh cinta, tawa, dan kenangan indah." />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- Background Animated Canvas (Hearts, Sparkles, Stars) -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Floating Balloons Layer -->
+  <div class="balloons-container" aria-hidden="true">
+    <div class="balloon balloon-1">🎈</div>
+    <div class="balloon balloon-2">🎈</div>
+    <div class="balloon balloon-3">💖</div>
+    <div class="balloon balloon-4">🎈</div>
+    <div class="balloon balloon-5">✨</div>
+  </div>
+
+  <!-- Initial Short Loading Screen -->
+  <div id="initialLoader">
+    <div class="heart-loader">💖</div>
+    <div class="loader-text">Mempersiapkan kejutan spesial...</div>
+  </div>
+
+  <!-- Hidden YouTube IFrame Container for Seamless Background Music -->
+  <div id="ytPlayerContainer">
+    <div id="ytPlayer"></div>
+  </div>
+
+  <!-- Floating Toast Notification -->
+  <div id="floatingToast" class="floating-toast">
+    <span>❤️</span>
+    <span id="toastMsg">Ada kejutan untukmu!</span>
+  </div>
+
+  <!-- Main Responsive App Container (Mobile-First) -->
+  <main class="app-container">
+
+    <!-- Top Sticky Nav & Progress Bar -->
+    <header class="top-nav" id="topNav">
+      <div class="step-indicator" title="Perjalanan Cerita">
+        <div class="step-dot active" data-step="1"></div>
+        <div class="step-dot" data-step="2"></div>
+        <div class="step-dot" data-step="3"></div>
+        <div class="step-dot" data-step="4"></div>
+        <div class="step-dot" data-step="5"></div>
+        <div class="step-dot" data-step="6"></div>
+        <div class="step-dot" data-step="7"></div>
+        <div class="step-dot" data-step="8"></div>
+      </div>
+
+      <div class="nav-actions">
+        <button id="globalMusicBtn" class="music-btn" onclick="toggleMusic()" title="Putar / Hentikan Musik Romantis">
+          <span class="music-icon">🎵</span> Putar Musik
+        </button>
+      </div>
+    </header>
+
+    <!-- Scene Container -->
+    <section class="scene-container">
+
+      <!-- ==========================================
+           HALAMAN 1 — WELCOME / RAHASIA BESAR 🎉
+           ========================================== -->
+      <article id="scene-1" class="scene active">
+        <div class="surprise-card">
+          <div class="card-badge">✨ RAHASIA BESAR HARI INI ✨</div>
+
+          <div class="mystery-avatar">👀</div>
+
+          <h1 class="fancy-title" style="font-size: 27px;">🎉 HEI KAMU... IYA KAMU! 👀</h1>
+
+          <div class="dialogue-box">
+            <div class="bubble">"Ada seseorang yang hari ini bertambah umur..."</div>
+            <div class="bubble">"Katanya masih muda dan imut-imut..."</div>
+            <div class="bubble bubble-funny">"Walaupun angka umurnya sudah mulai bikin mikir 🤭😂"</div>
+          </div>
+
+          <p class="subtitle" style="font-size: 14px; margin-bottom: 14px;">
+            Aku punya sesuatu yang spesial buat kamu hari ini. Sentuh tombol di bawah ini ya! 👇
+          </p>
+
+          <button id="btnWelcome" class="btn-primary pulse-glow" onclick="onWelcomeClick(event)">
+            🎁 KLIK AKU!
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==========================================
+           HALAMAN 2 — SELAMAT ULANG TAHUN 🎂 (TIUP LILIN)
+           ========================================== -->
+      <article id="scene-2" class="scene">
+        <div class="surprise-card">
+          <div class="card-badge">🎂 MOMEN SPESIAL 🎂</div>
+
+          <h1 class="fancy-title" style="color: #be123c; margin-bottom: 2px;">🎉 SELAMAT ULANG TAHUN! 🎉</h1>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 4px;">Untuk wanita hebat bernama...</p>
+          <div class="handwritten" style="font-size: 34px; margin-bottom: 12px;">💖 ARIFIA MAULIDA 💖</div>
+
+          <!-- Interactive Multi-tiered Cake -->
+          <div class="cake-stage" onclick="blowCandle()" title="Ketuk untuk tiup lilin!">
+            <div class="candle">
+              <div id="candleFlame" class="candle-flame"></div>
+              <div id="smokePuff" class="smoke-puff"></div>
+            </div>
+            <div class="strawberries">
+              <span>🍓</span>
+              <span>🍓</span>
+              <span>🍓</span>
+            </div>
+            <div class="cake-layer cake-top"></div>
+            <div class="cake-layer cake-bottom"></div>
+            <div class="cake-plate"></div>
+          </div>
+
+          <p class="subtitle" style="margin-bottom: 12px;">
+            "Selamat bertambah usia sayang!<br>
+            Tenang saja... kamu tidak tua kok...<br>
+            <strong>Kamu cuma semakin berpengalaman! 😂❤️</strong>"
+          </p>
+
+          <!-- Result after candle is blown -->
+          <div id="cakeWishResult" class="wishes-box" style="display: none;">
+            <p style="font-size: 18px; margin-bottom: 4px;">🎉 <strong>YEAYYY!</strong> 🥳</p>
+            <p>Semoga semua doa-doa baikmu, kesehatanmu, dan impianmu satu per satu menjadi kenyataan yang indah. Aamiin! ❤️</p>
+          </div>
+
+          <button id="blowCandleBtn" class="btn-primary" onclick="blowCandle()">
+            🕯️ TIUP LILINNYA!
+          </button>
+
+          <button id="cakeNextBtn" class="btn-primary" style="display: none; margin-top: 10px;" onclick="goToScene(3)">
+            Lanjut Ke Kejutan Berikutnya ➡️
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==========================================
+           HALAMAN 3 — TOMBOL JAHIL 😂
+           ========================================== -->
+      <article id="scene-3" class="scene">
+        <div class="surprise-card">
+          <div class="card-badge">😜 TES KEJUJURAN DULU 😜</div>
+
+          <h2 class="fancy-title" style="font-size: 24px;">Kamu senang nggak hari ini? 🥳</h2>
+          <p class="subtitle">Jawab dengan jujur dari lubuk hatimu yang paling dalam ya!</p>
+
+          <div id="playfulZone" class="playful-zone">
+            <!-- SENANG BANGET Button -->
+            <button id="btnSenangBanget" class="btn-yes" onclick="onSenangBangetClick()">
+              😍 SENANG BANGET!
+            </button>
+
+            <!-- BIASA AJA Runaway Button -->
+            <button id="btnBiasaAja" 
+                    class="btn-no" 
+                    onmouseover="moveRunawayButton(event)" 
+                    ontouchstart="moveRunawayButton(event)"
+                    onclick="moveRunawayButton(event)">
+              😒 BIASA AJA
+            </button>
+          </div>
+
+          <div id="funnyResponseText" class="toast-funny">
+            Pilih yang jujur ya sayang 😜
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ==========================================
+           HALAMAN 4 — PESAN MANIS SATU PER SATU 💌
+           ========================================== -->
+      <article id="scene-4" class="scene">
+        <div class="surprise-card">
+          <div class="card-badge">💌 DARI HATI YANG PALING DALAM 💌</div>
+
+          <h2 class="fancy-title" style="font-size: 22px;">Ada beberapa hal yang ingin aku bilang...</h2>
+          
+          <div id="sweetMessageContainer" class="message-card-deck">
+            <!-- Rendered by JavaScript -->
+          </div>
+
+          <div id="msgDotsContainer" class="msg-dots">
+            <!-- Rendered by JavaScript -->
+          </div>
+
+          <button id="btnNextMessage" class="btn-primary" onclick="handleNextSweetMessage()">
+            Buka Pesan 💖
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==========================================
+           HALAMAN 5 — GALERI MOMEN KITA 📸
+           ========================================== -->
+      <article id="scene-5" class="scene">
+        <div class="surprise-card">
+          <div class="card-badge">📸 GALERI KENANGAN INDAH 📸</div>
+
+          <h2 class="fancy-title" style="font-size: 23px;">MOMEN-MOMEN KITA</h2>
+          <p class="subtitle" style="font-size: 13.5px; margin-bottom: 12px;">
+            "Dari dua orang yang awalnya hanya punya mimpi... sampai sekarang menjadi keluarga kecil dengan banyak cerita ❤️"
+          </p>
+
+          <!-- Carousel Viewport -->
+          <div class="gallery-wrapper">
+            <div class="carousel-viewport">
+              <div id="galleryTrack" class="carousel-track">
+                <!-- Slides injected via script.js -->
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="carousel-controls">
+              <button class="carousel-nav-btn" onclick="slideGallery(-1)" aria-label="Sebelumnya">❮</button>
+              <div id="galleryPagination" class="gallery-pagination">1 / 4</div>
+              <button class="carousel-nav-btn" onclick="slideGallery(1)" aria-label="Selanjutnya">❯</button>
+            </div>
+          </div>
+
+          <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
+            💡 <em>Geser (swipe) foto ke kiri/kanan atau ketuk foto untuk memperbesar</em>
+          </p>
+
+          <button class="btn-primary" style="margin-top: 14px;" onclick="goToScene(6)">
+            Lanjut Ke Mini Game 🥰 ➡️
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==========================================
+           HALAMAN 6 — GAME MINI: PILIH HAL YANG PALING SUKA 🥰
+           ========================================== -->
+      <article id="scene-6" class="scene">
+        <div class="surprise-card">
+          <div class="card-badge">🎯 MINI GAME KUIS CINTA 🎯</div>
+
+          <h2 class="fancy-title" style="font-size: 22px;">Menurut kamu... apa yang paling aku suka dari kamu? 🤔</h2>
+          <p class="subtitle" style="font-size: 13.5px; margin-bottom: 12px;">Coba tebak pilihan mana yang paling tepat!</p>
+
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="checkQuizAnswer('senyum')">
+              <span>😍</span>
+              <span>Senyummu yang selalu bikin adem</span>
+            </button>
+
+            <button class="quiz-option-btn" onclick="checkQuizAnswer('lucu')">
+              <span>😂</span>
+              <span>Tingkah lucumu yang bikin ngakak</span>
+            </button>
+
+            <button class="quiz-option-btn" onclick="checkQuizAnswer('sabar')">
+              <span>❤️</span>
+              <span>Kesabaranmu menghadapi aku</span>
+            </button>
+
+            <button class="quiz-option-btn" onclick="checkQuizAnswer('ibu')">
+              <span>🥰</span>
+              <span>Cara hebat kamu menjadi seorang ibu</span>
+            </button>
+
+            <button class="quiz-option-btn special-option" onclick="checkQuizAnswer('all')">
+              <span>✨ 😜</span>
+              <span>Semua benar! (Gak bisa milih satu doang!)</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Quiz Response -->
+          <div id="quizResponse" class="quiz-response-box"></div>
+
+          <button id="quizNextBtn" class="btn-primary" style="display: none; margin-top: 14px;" onclick="goToScene(7)">
+            Buka Kotak Kejutan 🎁 ➡️
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==========================================
+           HALAMAN 7 — KOTAK KEJUTAN 🎁
+           ========================================== -->
+      <article id="scene-7" class="scene">
+        <div class="surprise-card">
+          <div class="card-badge">🎁 HADIAH DARI HATI 🎁</div>
+
+          <h2 class="fancy-title" style="font-size: 23px;">ADA SATU KEJUTAN UNTUKMU...</h2>
+          <p class="subtitle" style="font-size: 14px;">"Tapi buka pelan-pelan ya... jangan sampai kaget 🤭"</p>
+
+          <!-- 3D Gift Box -->
+          <div id="giftStage" class="gift-stage" onclick="openGiftBox()" title="Ketuk untuk membuka kado!">
+            <div class="gift-lid">
+              <div class="gift-bow">
+                <div class="bow-knot"></div>
+                <div class="bow-loop bow-left"></div>
+                <div class="bow-loop bow-right"></div>
+              </div>
+              <div class="gift-ribbon-vertical"></div>
+            </div>
+            <div class="gift-box">
+              <div class="gift-ribbon-horizontal"></div>
+              <div class="gift-ribbon-vertical"></div>
+            </div>
+          </div>
+
+          <button id="btnOpenGift" class="btn-primary pulse-glow" onclick="openGiftBox()">
+            BUKA HADIAHNYA! 🎁
+          </button>
+
+          <!-- Surprise Revealed Letter -->
+          <div id="surpriseLetter" class="surprise-letter">
+            <h3 class="fancy-title" style="font-size: 21px; text-align: center; color: var(--deep-rose); margin-bottom: 12px;">
+              💖 SELAMAT ULANG TAHUN, SAYANGKU 💖
+            </h3>
+            
+            <p>Hari ini mungkin hanya bertambah satu angka dalam usiamu...</p>
+            <p style="margin-top: 6px;">
+              Tapi bagiku, hari ini adalah pengingat bahwa aku sangat beruntung karena wanita hebat sepertimu lahir ke dunia.
+            </p>
+            <p style="margin-top: 6px;">
+              Terima kasih sudah hadir dalam hidupku. Terima kasih sudah menjadi istri, sahabat, partner, dan ibu yang luar biasa untuk keluarga kecil kita.
+            </p>
+            <p style="margin-top: 6px;">
+              Aku mungkin tidak selalu sempurna. Kadang menyebalkan. Kadang juga sok benar 😂
+            </p>
+            <p style="margin-top: 8px; font-weight: 700; color: var(--deep-rose); font-size: 16px;">
+              Tapi satu hal yang selalu benar adalah...<br>
+              Aku sangat mencintaimu. ❤️
+            </p>
+          </div>
+
+          <button id="giftNextBtn" class="btn-primary" style="display: none; margin-top: 16px;" onclick="goToScene(8)">
+            Lanjut Ke Pesan Terakhir Dari Hatiku 💌 ➡️
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==========================================
+           HALAMAN 8 — MOMEN ROMANTIS TERAKHIR 🥰❤️
+           ========================================== -->
+      <article id="scene-8" class="scene">
+        <div class="romantic-sky">
+          <div class="sky-stars"></div>
+
+          <div style="text-align: center; margin-bottom: 8px;">
+            <span style="font-size: 32px;">✨ 💖 ✨</span>
+          </div>
+
+          <h2 class="fancy-title">Untuk Arifia Maulida ❤️</h2>
+          <p style="text-align: center; font-size: 13px; color: #ffd1dc; margin-bottom: 12px;">
+            <em>Sebuah janji dan rasa syukur terdalam dari suamimu</em>
+          </p>
+
+          <!-- Typewriter Container -->
+          <div id="typewriterText" class="typewriter-content"></div>
+
+          <!-- Handwritten Signature -->
+          <div class="signature-box">
+            <p style="font-size: 14px; color: #fecdd3;">Dengan seluruh cinta dan kasih sayang,</p>
+            <div class="signature-name">Suamimu ❤️</div>
+          </div>
+
+          <!-- Final Actions -->
+          <div class="action-buttons-grid">
+            <button class="btn-primary" onclick="restartSurprise()">
+              💖 ULANGI KEJUTANNYA
+            </button>
+
+            <button class="btn-whatsapp" onclick="openWhatsAppReply()">
+              <span>💬</span> Balas Pesan ke Suami (WhatsApp)
+            </button>
+
+            <button class="btn-secondary" onclick="downloadSingleHtml()" style="background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3);">
+              📥 Unduh File Kenangan Ini (.HTML)
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Footer Copyright Note -->
+    <footer style="text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 20px; opacity: 0.8;">
+      Dibuat dengan sepenuh hati ❤️ Khusus untuk ulang tahun Arifia Maulida
+    </footer>
+
+  </main>
+
+  <!-- Full Photo Lightbox Modal -->
+  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Tutup">✕</button>
+    <img id="lightboxImg" class="lightbox-content" src="" alt="Foto Kenangan" onclick="event.stopPropagation()" />
+    <div id="lightboxCaption" class="lightbox-caption" onclick="event.stopPropagation()"></div>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="./script.js"></script>
+
+</body>
+</html>

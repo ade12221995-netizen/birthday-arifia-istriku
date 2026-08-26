@@ -1,0 +1,8 @@
+{
+  "name": "Surprise Birthday untuk Arifia Maulida",
+  "description": "Website ucapan ulang tahun interaktif, romantis, lucu, dan penuh kejutan spesial untuk Arifia Maulida.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
